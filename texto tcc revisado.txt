@@ -1,0 +1,123 @@
+Slide2
+Para iniciar a apresentação vou contextualiza-los com informações do cenário atual da industria de desenvolvimento de software.
+Cerca de 1,23 trilhões de dolares foram movimentados pelo mercado de desenvolvimento de software no ano de 2008.
+Alem disso este segmento possui um crescimento de 3% ao ano.
+Diante deste crescimento expressivo, muitas empresas surgiram neste segmento, aumentando ainda mais as disputas entre elas.
+Muitas vezes essas empresas abrem mao da qualidade no processo de desenvolvimento para conseguirem uma produtividade maior.
+A curto prazo essa produtividade é alcancada, mas a longo prazo as empresas sentem os impactos da falta de qualidade durante o desenvolvimento.
+Essa desatencao para a qualidade pode ser considerada uma grande oportunidade de melhoria no processo de desenvolvimento de software.
+
+Slide3
+Para conseguirmos essa melhoria no processo de desenvolvimento de software devemos entender como essa melhoria de processo ocorreu em outras areas da industria mundial.
+O pensamento Lean surgiu no Japao na decada de 40, é conhecido tambem por cultura Toyota porque surgiu na Toyota.
+Dois engenheiros da Toyota foram designados a estudar uma maneira para reduzir os custos no processo de producao dos veiculos e assim conquistar uma fatia maior do mercado.
+Foi dai que surgiu o pensamento Lean que tem como seu principal pilar a reducao de desperdicios.
+O pensamento Lean pode ser adaptado e aplicado no ciclo de desenvolvimento de qualquer outro produto, até no desenvolvimento de software, que é o foco deste trabalho.
+
+Slide4
+Neste Slide temos alguns dos principios do pensamento Lean adaptados para o desenvolvimento de software.
+
+Slide5
+Quando adicionamos os principios Lean ao desenvolvimento de software surgem as praticas ágeis, que sao acoes que auxiliam a atender os principios do pensamento Lean.
+
+Slide6
+Algumas das principais praticas ageis sao:
+Programacao em pares: 
+	Dois desenvolvedores sao colocados para trabalhar em uma funcionalidade em conjunto.
+	Com a programacao em pares conseguimos:
+	 	Eliminar o desperdicio durante o desenvolvimento ja que um desenvolvedor ajuda o outro a nao criar codigo desnecessario.
+		Amplificar o aprendizado porque os desenvolvedores trocam experiencias quando trabalham em pares
+		Adicionar Seguranca porque a programacao em par intensifica a revisao de codigo, ou seja, o codigo gerado sera revisado por no minimo dois desenvolvedores.
+Integracao Rapida:
+	Integrar rapidamente significa liberar versoes com uma frequencia alta para que o cliente consiga dar feedback sobre o que ja foi desenvolvido e assim sugerir 
+		modificacoes no inicio do projeto, fase em que os custos para modificacoes é menor.
+Design Simples:
+	Ajuda a eliminar o deseperdicio porque codigo simples é mais facil de dar manutencao e isso acaba reduzindo o tempo gasto pela equipe de desenvolvimento.
+Feedback do cliente:
+	Esta pratica visa trazer o cliente para mais perto da equipe de desenvolvimento e isso ajuda os desenvolvedores a entender melhor as necessidades do cliente.
+TDD:
+	Essa pratica consiste em criar testes antes de desenvolver o codigo para um funcionalidade.
+
+Slide7
+Test Driven Development, tambem conhecido como TDD.
+O TDD consiste basicamente em escrever uma rotina de testes baseada em requisitos de uma funcionalidade do sistema, esses testes ao serem executados, obviamente, vao falhar ja que nao existe codigo para suprir as necessidades deste teste.
+Em seguida é desenvolvido o codigo para atender as necessidades do teste e assim que esse codigo estiver funcionando de acordo com os testes o desenvolvedor pode refatorar o codigo, ou seja, ele pode reestruturar o codigo para melhorar seu design e facilitar manutencoes futuras.
+O ciclo de desenvolvimento convencional funciona da seguinte maneira: o desenvolvedor cria o codigo para uma funcionalidade e em seguida passa para um testador avaliar o que foi desenvolvido, o testador gera uma lista de defeitos e retorna para o desenvolvedor e finalmente o desenvolvedor corrige os defeitos levantados pelo testador.
+O fluxo convencional envolve duas pessoas e normalmente gasta muito tempo, ou seja, o custo é maior.
+O desenvolvimento com TDD tende a ter um custo menor porque apenas uma pessoa é necessária para a maior parte das verificacoes, sem contar na velocidade em que os erros sao encontrados e corrigidos. O desenvolvedor implementa um codigo para atender um teste e ja pode ver se a implementacao foi efetiva ou nao. O feedback é instantaneo.
+
+Slide8
+Algumas vantanges do TDD sao:
+	Evita a criacao de codigo desnecessario, ja que o codigo desenvolvido se restringe apenas as necessidades do teste.
+	Aumenta o feedback do codigo para o desenvolvedor: A medida que o desenvoldedor cria codigo para o teste ele ja ve se o que ele implementou fez o teste passar ou nao.
+	Aumenta a seguranca durante a manutencao do sistema: Quando desenvolvemos com TDD temos um conjunto de testes para as funcionalidades ja implementadas e quando precisamos fazer alguma modificacao podemos executar esse conjunto de testes e verificar se o que foi modificacao causou algum impacto nas outras funcionalidades.
+	
+### SLIDE 9 ###
+			Agora vou demonstrar a voces, atraves de um estudo de caso, as vantagens decorrentes da utilizacao dos principios Lean e das praticas ageis no desenvolvimento de software.
+			O sistema do estudo de caso é um sistema de catalogo digital para restaurante, ou seja, um cardapio de restaurante.
+			O sistema é composto pela sua parte web e sua parte movel, ambas desenvolvidas com uso de TDD.
+			A comunicacao entre elas é feita por HTTP.
+			O funcionamento basico do sistema ocorre da seguinte forma: 
+			O administrador do resutaurante cadastra, no sistema web, os itens que seu restaurante vende e o cliente do restaurante pode visualiza-los em um tablet, representando o cardapio do estabelecimento.
+	
+	### SLIDE 10 ###
+		Este é o diagrama de caso de uso do sistema web, o ator principal é o Administrador do restaurante e os casos de uso sao:
+		Gerenciar os usuarios.
+		Gerenciar categorias.
+		Gerenciar Itens.
+		E o sistema tambem possui uma funcionalidade para disponibilizar uma versao do aplicacao mobile para download.
+
+	### SLIDE 11 ###
+		Este é o diagrama de dominio do sistema, o sistema é bem simples, ele possui a entidade usuario, categoria e item.
+		Um usuario possui muitas categorias e uma categoria possui muitos itens.
+
+	### SLIDE 12 ###
+		O sistema web foi desenvolvido utilizando ruby on rails devido a grande quantidade de plugins para o desenvolvimento orientado a testes, que é o foco deste trabalho.
+		No sistema web foram desenvolvidos: 
+			testes de unidade, que sao testes que testam uma classe isolada das outras
+			testes de integracao, que validam o comportamento de varias unidades em conjunto
+		Os testes foram desenvolvidos utilizando um plugin chamado RSpec, que facilita a escrita dos testes e melhora a expressividade do codigo de teste
+
+	### SLIDE 13 ###
+		Esta figura exemplifica um codigo de teste escrito para a classe Categoria.
+		Podemos verificar que das linhas 7 a 10 foram feitas validacoes de relacionamento e existencia de atributos.
+		Pode-se ver que os testes sao bem intuitivos e expressivos, consegue-se isso com a ajuda do rspec.
+		Alem das verificacoes simples pode-se criar verificacoes mais customizadas e complexas como é mostrado apartir da linha 12.
+
+	### SLIDE 14 ###
+		Esta figura mostra o codigo desenvolvido para atender os requisitos do teste mostrado no slide anterior, podemos ver que o codigo é bem simples e bem legivel, assim como o codigo de teste.
+
+	### SLIDE 15 ###	
+		Agora vamos falor um pouco do sistema mobile.
+		Este é o diagrama de casos de uso do sistema mobile, onde os principais atores sao o gracom e o cliente do restaurante.
+		O caso de uso configurar sistema é onde o garcom configura as credenciais do restaurante para fazer a comunicacao com o sistema web e obter os dados cadastrados atraves do caso de uso de sincronizacao dos cadastros.
+		E por fim, o caso de uso de visualizacao dos itens pode ser disparado pelo garcom e pelo cliente do restaurante.
+
+	### SLIDE 16 ###
+		O sistema mobile foi desenvolvido para a plataforma android, devido ao crescimento da plataforma e de nao existir nenhum custo associado ao desenvolvimento utilizando esta plataforma. Ao contrario do desenvolvimento para IPhone/IPad onde o desenvolvedor precisa pagar uma licenca para desenvolver seus aplicativos.
+		No sistema mobile foram criados apenas testes de integracao devido a dificuldade existente na criacao de testes causada pela falta de ferramentas de teste para android.
+
+	### SLIDE 17 ###
+		Esta figura mostra um exemplo de codigo de teste para a tela de configuracao do sistema mobile.
+		Podemos ver que o teste valida a presenca de alguns textos na tela.
+
+	### SLIDE 18 ###
+		Esta figura mostra a tela de configuracao do sistema mobile que tem seu codigo de teste mostrado no slide anterior.
+
+	### SLIDE 19 ###
+		Para analisar os resultados obtidos durante o desenvolvimento desses dois sistemas foram gerados relatorios de cobertura para cada um deles.
+		A cobertura de testes relaciona a quantidade de linhas de codigo que sao testadas com a quantidade de linhas de codigo que foram desenvolvidas e essa relacao nos da uma medida percentual que representa a porcentagem de cobertura do codigo.
+		Segundo o autor Tassey, quanto maior for a cobertura do codigo de uma aplicacao, menor sera o numero de defeitos no sistema, ou seja, quanto maior a taxa de cobertura melhor.
+
+	### SLIDE 20 ###	
+		Este slide mostra o relatoio de cobertura para o sistema web, este relatorio mostra que 90,48% das linhas de codigo da aplicacao web estao cobertas por testes.
+		Neste relatorio podemos ver a porcentagem de cobertura separada por camada da aplicacao e com base nessas informacoes podemos tomar decisoes de melhoria em pontos especificos do codigo.
+
+	### SLIDE 21 ###		
+		Este slide mostra o relatoio de cobertura para o sistema mobile, a metrica utilizada para avaliar cobertura foi a metrica que mede a porcentagem de linhas de codigo cobertas por teste. Neste relatorio podemos ver 73% das linhas estao cobertas por testes.
+		Quando comparamos aos 90% de cobertura do sistema web podemos ver uma significante diferenca que resulta em um indicador de qualidade maior para o sistema web.
+
+	### SLIDE 22 ###
+		A conclusao é bem breve e simples.
+		Quando utilizamos desenvolvimento orientado a testes, temos um aumento na cobertura de testes do sistema e esse aumento da cobertura resulta na reducao de defeitos do sistema, com a reducao dos defeitos do sistema temos um aumento na qualidade do mesmo e aumentando a qualidade conseguimos uma reducao nos custos durante o desenvolvimento. Disponibilizando um software com mais qualidade e mais barato para o cliente final.
+	
